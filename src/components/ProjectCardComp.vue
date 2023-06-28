@@ -36,6 +36,7 @@ export default {
                             <h4 class="card-title text-uppercase">{{ elem.title }}</h4>
                             <p class="card-text"><strong>Description:</strong> {{ elem.description }}</p>
                             <p class="card-text"><strong>Price:</strong> {{ elem.price }}&euro;</p>
+                            <p class="card-text" v-if="elem.type"><strong>Type:</strong> {{ elem.type.name }}</p>
                         </div>
                     </div>
                 </div>
