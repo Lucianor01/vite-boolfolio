@@ -1,11 +1,11 @@
 <script>
 
-import ProjectComp from './ProjectComp.vue';
+import ProjectCardComp from './ProjectCardComp.vue';
 
 export default {
     name: "MainComp",
     components: {
-        ProjectComp
+        ProjectCardComp
     },
     data() {
         return {
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-    <ProjectComp />
+    <ProjectCardComp />
 </template>
 
 <style lang="scss" scoped></style>
