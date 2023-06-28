@@ -3,7 +3,7 @@
 import ProjectComp from './ProjectComp.vue';
 
 export default {
-    name: "FooterComp",
+    name: "MainComp",
     components: {
         ProjectComp
     },
