@@ -1,9 +1,14 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderComp from './components/HeaderComp.vue'
+import MainComp from './components/MainComp.vue';
+import FooterComp from './components/FooterComp.vue';
 
 export default {
   name: "App",
   components: {
+    HeaderComp,
+    MainComp,
+    FooterComp
 
   }
 }
@@ -11,7 +16,11 @@ export default {
 </script>
 
 <template>
-  <h1>Ciao mondo</h1>
+  <HeaderComp />
+  <main>
+    <MainComp />
+  </main>
+  <FooterComp />
 </template>
 
 <style lang="scss">
