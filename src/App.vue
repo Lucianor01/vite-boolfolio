@@ -18,10 +18,7 @@ export default {
 
 <template>
   <AppHeader />
-  <main>
-    <MainComp />
-  </main>
-  <FooterComp />
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
