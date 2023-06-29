@@ -1,11 +1,9 @@
 <script>
 
-import ProjectList from '../pages/ProjectList.vue';
 
 export default {
     name: "MainComp",
     components: {
-        ProjectList
     },
     data() {
         return {
@@ -19,9 +17,6 @@ export default {
 
 </script>
 
-<template>
-    <ProjectList />
-    <router-view></router-view>
-</template>
+<template></template>
 
 <style lang="scss" scoped></style>

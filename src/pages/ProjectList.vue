@@ -37,15 +37,17 @@ export default {
     <div class="container mt-5">
         <div class="row row-gap-4">
             <div class="col-3" v-for="(elem, index) in projects" :key="index">
-                <div class="card h-100">
-                    <img class="card-img-top" :src="`${baseUrl}/storage/${elem.project_image}`" alt="Title">
-                    <div class="card-body">
-                        <h4 class="card-title text-uppercase">{{ elem.title }}</h4>
-                        <p class="card-text"><strong>Description:</strong> {{ elem.description }}</p>
-                        <p class="card-text"><strong>Price:</strong> {{ elem.price }}&euro;</p>
-                        <p class="card-text" v-if="elem.type"><strong>Type:</strong> {{ elem.type.name }}</p>
+                <router-link class="text-decoration-none" :to="{ name: 'project', params: { slug: elem.slug } }">
+                    <div class="card h-100">
+                        <img class="card-img-top" :src="`${baseUrl}/storage/${elem.project_image}`" alt="Title">
+                        <div class="card-body">
+                            <h4 class="card-title text-uppercase">{{ elem.title }}</h4>
+                            <p class="card-text"><strong>Description:</strong> {{ elem.description }}</p>
+                            <p class="card-text"><strong>Price:</strong> {{ elem.price }}&euro;</p>
+                            <p class="card-text" v-if="elem.type"><strong>Type:</strong> {{ elem.type.name }}</p>
+                        </div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
