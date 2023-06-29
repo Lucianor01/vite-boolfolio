@@ -1,11 +1,11 @@
 <script>
 
-import ProjectCardComp from './ProjectCardComp.vue';
+import ProjectList from '../pages/ProjectList.vue';
 
 export default {
     name: "MainComp",
     components: {
-        ProjectCardComp
+        ProjectList
     },
     data() {
         return {
@@ -20,7 +20,8 @@ export default {
 </script>
 
 <template>
-    <ProjectCardComp />
+    <ProjectList />
+    <router-view></router-view>
 </template>
 
 <style lang="scss" scoped></style>

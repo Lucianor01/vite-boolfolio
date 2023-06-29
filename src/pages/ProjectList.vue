@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 export default {
-    name: "ProjectCardComp",
+    name: "ProjectList",
     data() {
         return {
             projects: [],

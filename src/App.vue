@@ -1,12 +1,13 @@
 <script>
-import HeaderComp from './components/HeaderComp.vue'
+import AppHeader from './components/AppHeader.vue'
 import MainComp from './components/MainComp.vue';
 import FooterComp from './components/FooterComp.vue';
 
 export default {
   name: "App",
   components: {
-    HeaderComp,
+
+    AppHeader,
     MainComp,
     FooterComp
 
@@ -16,7 +17,7 @@ export default {
 </script>
 
 <template>
-  <HeaderComp />
+  <AppHeader />
   <main>
     <MainComp />
   </main>
@@ -24,5 +25,5 @@ export default {
 </template>
 
 <style lang="scss">
-@use './style/main.scss'
+@use './style/main.scss';
 </style>
