@@ -34,7 +34,15 @@ export default {
                 <router-link class="nav-link" :to="{ name: 'projects' }">Blog</router-link>
               </li>
             </ul>
-
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/login" target="_blank" rel="noopener noreferrer">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/register" target="_blank"
+                  rel="noopener noreferrer">Register</a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
