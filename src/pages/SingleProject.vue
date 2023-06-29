@@ -7,7 +7,7 @@ export default {
     data() {
         return {
             baseUrl: 'http://127.0.0.1:8000',
-            project: null
+            project: null,
         }
     },
     beforeMount() {
@@ -43,6 +43,14 @@ export default {
                     <p class="card-text"><strong>Description:</strong> {{ project.description }}</p>
                     <p class="card-text"><strong>Price:</strong> {{ project.price }}&euro;</p>
                     <p class="card-text" v-if="project.type"><strong>Type:</strong> {{ project.type.name }}</p>
+                    <div v-if="project.technologies.length > 0" class="card-text d-flex">
+                        <p class="me-2"><strong>Technologies:</strong></p>
+                        <ul class="list-group list-group-horizontal list-unstyled">
+                            <li v-for="(item, index) in project.technologies" :key="index" class="me-1">
+                                {{ item.name + (index !== project.technologies.length - 1 ? '/' : '') }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
