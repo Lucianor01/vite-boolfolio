@@ -9,23 +9,37 @@ export default {
             projects: [],
             baseUrl: 'http://127.0.0.1:8000',
             currentPage: 1,
-            lastPage: null
+            lastPage: null,
+            types: null,
+            selectedType: "all"
         }
     },
     mounted() {
-        this.getProjects(1)
+        this.getProjects(1);
+        this.getTypes();
     },
     methods: {
         getProjects(projectApiPage) {
-            axios.get(`${this.baseUrl}/api/projects`, {
-                params: {
-                    page: projectApiPage
-                }
-            }).then(res => {
+
+            const params = {
+                page: projectApiPage
+            }
+
+            if (this.selectedType !== 'all') {
+                params.type_id = this.selectedType
+            }
+
+            axios.get(`${this.baseUrl}/api/projects`, { params }).then(res => {
                 // DATI DELLA PAGINA CORRENTE
                 this.projects = res.data.projects.data
                 this.currentPage = res.data.projects.current_page
                 this.lastPage = res.data.projects.last_page
+            })
+        },
+
+        getTypes() {
+            axios.get(`${this.baseUrl}/api/types`).then(res => {
+                this.types = res.data.types
             })
         }
     },
@@ -35,6 +49,15 @@ export default {
 
 <template>
     <div class="container mt-5">
+
+        <div class="mb-3">
+            <label for="" class="form-label">Types Filter</label>
+            <select @change="getProjects()" v-model="selectedType" class="form-select form-select-lg" name="" id="">
+                <option value="all" selected>-- All --</option>
+                <option :value="item.id" v-for="(item, index) in types" :key="index">{{ item.name }}</option>
+            </select>
+        </div>
+
         <div class="row row-gap-4">
             <div class="col-3" v-for="(elem, index) in projects" :key="index">
                 <router-link class="text-decoration-none" :to="{ name: 'project', params: { slug: elem.slug } }">
