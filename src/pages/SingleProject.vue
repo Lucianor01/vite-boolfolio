@@ -23,11 +23,18 @@ export default {
                 }, error => {
                     if (error.response.status === 404) {
                         this.$router.push({ name: 'not-found' })
-                    } else {
-
                     }
                 }
                 );
+        },
+
+        goBack() {
+
+            // METODO 1 PER TORNARE INDIETRO
+            // this.$router.back();
+
+            // METODO 2 CON GO()
+            this.$router.go(-1);
         }
     },
 }
@@ -37,8 +44,9 @@ export default {
 <template>
     <div class="container">
         <h1 class="text-center mt-5 text-uppercase">Single Project</h1>
+
         <div class="col-3 m-auto mt-4">
-            <div class="card h-100">
+            <div v-if="project" class="card h-100">
                 <img class="card-img-top" :src="`${baseUrl}/storage/${project.project_image}`" alt="Title">
                 <div class="card-body">
                     <h4 class="card-title text-uppercase">{{ project.title }}</h4>
@@ -55,6 +63,9 @@ export default {
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="mt-4 text-center">
+            <a href="" @click.prevent="goBack" class="btn btn-primary text-center">Go back</a>
         </div>
     </div>
 </template>
