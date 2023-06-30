@@ -28,7 +28,7 @@ export default {
           <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav me-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <router-link class="nav-link active" :to="{ name: 'home' }" aria-current="page">Home</router-link>
+                <router-link class="nav-link " :to="{ name: 'home' }" aria-current="page">Home</router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" :to="{ name: 'projects' }">Blog</router-link>
@@ -51,4 +51,8 @@ export default {
   </header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.router-link-active {
+  color: rgb(27, 216, 27);
+}
+</style>
