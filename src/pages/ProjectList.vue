@@ -42,8 +42,6 @@ export default {
                 params.technologies_ids = this.selectedTechnologies.join(',')
             }
 
-
-
             axios.get(`${this.baseUrl}/api/projects`, { params }).then(res => {
                 // DATI DELLA PAGINA CORRENTE
                 this.projects = res.data.projects.data
@@ -83,7 +81,7 @@ export default {
             <div>
                 <span>Technologies Checkbox</span>
             </div>
-            <label class="list-group-item-inline form-check-inline" v-for="(item, index) in technologies" :key="index">
+            <label class="list-group-item-inline form-check-inline mt-2" v-for="(item, index) in technologies" :key="index">
                 <input class="form-check-input me-1" type="checkbox" :value="item.id" v-model="selectedTechnologies">
                 {{ item.name }}
             </label>
