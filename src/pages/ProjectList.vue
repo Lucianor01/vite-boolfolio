@@ -11,12 +11,21 @@ export default {
             currentPage: 1,
             lastPage: null,
             types: null,
-            selectedType: "all"
+            selectedType: "all",
+            technologies: null,
+            selectedTechnologies: []
         }
     },
     mounted() {
         this.getProjects(1);
         this.getTypes();
+        this.getTechnologies();
+    },
+    watch: {
+        selectedTechnologies: {
+            handler: 'getProjects',
+            deep: true
+        }
     },
     methods: {
         getProjects(projectApiPage) {
@@ -28,6 +37,12 @@ export default {
             if (this.selectedType !== 'all') {
                 params.type_id = this.selectedType
             }
+
+            if (this.selectedTechnologies.length > 0) {
+                params.technologies_ids = this.selectedTechnologies.join(',')
+            }
+
+
 
             axios.get(`${this.baseUrl}/api/projects`, { params }).then(res => {
                 // DATI DELLA PAGINA CORRENTE
@@ -41,6 +56,12 @@ export default {
             axios.get(`${this.baseUrl}/api/types`).then(res => {
                 this.types = res.data.types
             })
+        },
+
+        getTechnologies() {
+            axios.get(`${this.baseUrl}/api/technologies`).then(res => {
+                this.technologies = res.data.technologies
+            })
         }
     },
 }
@@ -49,7 +70,7 @@ export default {
 
 <template>
     <div class="container mt-5">
-
+        <!-- SELEZIONE LE CATEGORIES ONE TO MANY -->
         <div class="mb-3">
             <label for="" class="form-label">Types Filter</label>
             <select @change="getProjects()" v-model="selectedType" class="form-select form-select-lg" name="" id="">
@@ -57,8 +78,18 @@ export default {
                 <option :value="item.id" v-for="(item, index) in types" :key="index">{{ item.name }}</option>
             </select>
         </div>
-
-        <div class="row row-gap-4">
+        <!-- TECHNOLOGIES -->
+        <div class="list-group-inline form-check-inline mt-3">
+            <div>
+                <span>Technologies Checkbox</span>
+            </div>
+            <label class="list-group-item-inline form-check-inline" v-for="(item, index) in technologies" :key="index">
+                <input class="form-check-input me-1" type="checkbox" :value="item.id" v-model="selectedTechnologies">
+                {{ item.name }}
+            </label>
+        </div>
+        <!-- CICLO PROJECT -->
+        <div class="row row-gap-4 mt-5">
             <div class="col-3" v-for="(elem, index) in projects" :key="index">
                 <router-link class="text-decoration-none" :to="{ name: 'project', params: { slug: elem.slug } }">
                     <div class="card h-100">
@@ -74,7 +105,7 @@ export default {
             </div>
         </div>
     </div>
-
+    <!-- PAGE NAVIGATION -->
     <nav aria-label="Page navigation" class="container mt-5">
         <ul class="pagination    ">
             <li class="page-item" :class="(currentPage === 1) ? 'disabled' : ''">
