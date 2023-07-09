@@ -33,6 +33,9 @@ export default {
               <li class="nav-item">
                 <router-link class="nav-link" :to="{ name: 'projects' }">Blog</router-link>
               </li>
+              <li class="nav-item">
+                <router-link class="nav-link" :to="{ name: 'contact' }">Contact</router-link>
+              </li>
             </ul>
             <ul class="navbar-nav">
               <li class="nav-item">

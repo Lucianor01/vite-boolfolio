@@ -24,6 +24,11 @@ const router = createRouter({
             component: SingleProject
         },
         {
+            path: '/contact',
+            name: 'contact',
+            component: () => import("./pages/Contact.vue")
+        },
+        {
             path: '/:pathMatch(.*)*',
             name: 'not-found',
             component: NotFound
