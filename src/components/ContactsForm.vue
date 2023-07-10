@@ -28,7 +28,7 @@ export default {
 
                     this.success = res.data.success
 
-                    console.log(this.success)
+                    // console.log(this.success)
 
                     if (this.success) {
                         // SE è TRUE
@@ -39,10 +39,6 @@ export default {
                         this.errors = res.data.errors
                     }
                 })
-                .catch(error => {
-                    console.error(error);
-                    // Handle the error here, display an error message, or take other actions
-                });
         }
     },
 }
