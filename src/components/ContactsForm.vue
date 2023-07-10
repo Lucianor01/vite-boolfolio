@@ -51,12 +51,12 @@ export default {
             <div class="mb-3">
                 <label for="" class="form-label">Name</label>
                 <input v-model="name" type="text" class="form-control" name="name" id="" aria-describedby="helpId"
-                    placeholder="Inserisci il tuo nome">
+                    placeholder="Enter your Name">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Email</label>
                 <input v-model="email" type="email" class="form-control" name="email" id="" aria-describedby="helpId"
-                    placeholder="Inserisci la tua Email">
+                    placeholder="Enter Email">
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">Message</label>
